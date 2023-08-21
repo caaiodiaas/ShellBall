@@ -16,12 +16,18 @@ using std::uniform_int_distribution;
 
 
 // ---------------------------------------------------------------------------------
-enum PowerType{SPEED, SLOW};
+enum PowerType{SPEED, SLOW, USED};
 
 class PowerUp : public Object
 {
 private:
-    Sprite* powerUp = nullptr;        // sprite da plataforma
+    TileSet* tileset = nullptr;        // folha de sprites da bola
+    Animation* anim = nullptr;         // animação da bola
+        random_device rd;               // gerador não determinístico
+    mt19937 mt{ rd() };             // gerador mersenne twister
+
+    uniform_int_distribution<int> randX{ -1,0 };
+    uniform_int_distribution<int> randY{ -1,0 };
     PowerType powerType;
     Player1* player1;
     Player2* player2;
@@ -29,7 +35,7 @@ private:
     Player4* player4;
 
 public:
-    PowerUp(float posX, float posY, Player1* player1, Player2* player2, Player3* player3, Player4* player4);
+    PowerUp(Player1* player1, Player2* player2, Player3* player3, Player4* player4);
     ~PowerUp();
 
     void OnCollision(Object* obj);     // resolução da colisão
@@ -42,7 +48,7 @@ public:
 
 inline void PowerUp::Draw()
 {
-    powerUp->Draw(x, y, z);
+    anim->Draw(x, y, z);
 }
 
 // ---------------------------------------------------------------------------------

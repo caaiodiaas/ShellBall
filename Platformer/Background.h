@@ -19,16 +19,16 @@
 #include "Sprite.h"                     // background é composto por sprites
 
 // ---------------------------------------------------------------------------------
-
+enum BackgroundType{REGULAR, TUTORIAL};
 class Background : public Object
 {
 private:
-   
-
-    Sprite * background;                       // fundo estático
-
+    Sprite* regular = nullptr;
+    Sprite* tutorial = nullptr;
+    Sprite * background = nullptr;                  
 
 public:
+    BackgroundType backgroundType;
     Background();                       // construtor
     ~Background();                      // destrutor
 

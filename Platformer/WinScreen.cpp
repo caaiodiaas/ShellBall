@@ -15,16 +15,14 @@
 
 WinScreen::WinScreen(uint winType)
 {
-    MoveTo(window->CenterX(), window->CenterY(), Layer::FRONT);
+    MoveTo(window->CenterX(), window->CenterY(), Layer::UPPER);
 
     if (winType == A) {
-        winScreen = new Sprite("Resources/SmallGray.png");
+        winScreen = new Sprite("Resources/YellowWins.png");
     }
     else {
-        winScreen = new Sprite("Resources/LongGray.png");
+        winScreen = new Sprite("Resources/PinkWins.png");
     }
-
-
 
 }
 
@@ -46,7 +44,7 @@ void WinScreen::Update()
 void WinScreen::Draw()
 {
     // desenha pano de fundo
-    winScreen->Draw(window->CenterX(), window->CenterY(), Layer::FRONT);
+    winScreen->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
 
 }
 

@@ -32,7 +32,7 @@ Player4::Player4()
 
     side = 2;
 
-    MoveTo(700.0f, window->CenterY(), 0.0f);
+    MoveTo(700.0f, window->CenterY(), Layer::MIDDLE);
 
     BBox(new Rect(-16, -height2, 16, height2));
 
@@ -54,18 +54,18 @@ void Player4::OnCollision(Object* obj)
     Ball* ball = (Ball*)obj;
 
     if (ball->Y() + ball->height2 - 6 < y - height2 && ball->Y() - ball->height2 < y - height2) {
-        ball->MoveTo(ball->X(), ball->Y() - 6);
+        ball->MoveTo(ball->X(), ball->Y() - 6, Layer::MIDDLE);
         ball->velY = -ball->velY;
     }
     else if (ball->X() - ball->width2 + 6 > x + 16 && ball->X() + ball->width2 > x + 16) {
-        ball->MoveTo(ball->X() + 6, ball->Y());
+        ball->MoveTo(ball->X() + 6, ball->Y(), Layer::MIDDLE);
         ball->velX = -ball->velX;
     }else    if (ball->Y() - ball->height2 + 6 > y + height2 && ball->Y() + ball->height2 > y + height2) {
-        ball->MoveTo(ball->X(), ball->Y() + 6);
+        ball->MoveTo(ball->X(), ball->Y() + 6, Layer::MIDDLE);
         ball->velY = -ball->velY;
     }
     else     if (ball->X() + ball->width2 - 6 < x - 16 && ball->X() - ball->width2 < x - 16) {
-        ball->MoveTo(ball->X() - 6, ball->Y());
+        ball->MoveTo(ball->X() - 6, ball->Y(), Layer::MIDDLE);
         ball->velX = -ball->velX;
     }
     if (ball->velX < 400 && ball->velX > -400) {
@@ -81,14 +81,11 @@ void Player4::OnCollision(Object* obj)
 void Player4::Update()
 {
 
-
-    //Translate(0, -12);
-
     if (y + height2 > 370)
-        MoveTo(x, 370 - height2);
+        MoveTo(x, 370 - height2, Layer::MIDDLE);
 
     if (y - height2 < 80)
-        MoveTo(x, 80 + height2);
+        MoveTo(x, 80 + height2, Layer::MIDDLE);
 
 
     if (window->KeyDown(VK_UP)) {

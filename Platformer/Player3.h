@@ -21,9 +21,10 @@ private:
     Animation* anim = nullptr;         // animação do personagem
     int side;
     int height2;
-    int vel;
+
 
 public:
+    int vel;
     Player3();                           // construtor
     ~Player3();                          // destrutor
 

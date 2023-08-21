@@ -8,7 +8,10 @@ Background::Background()
 {
     MoveTo(window->CenterX(), window->CenterY(), Layer::BACK);
 
-    background   = new Sprite("Resources/Background.png");    
+    tutorial = new Sprite("Resources/BackgroundStart.png");
+    regular   = new Sprite("Resources/Background.png");
+    backgroundType = TUTORIAL;
+    background = tutorial;
 
 }
 
@@ -16,7 +19,8 @@ Background::Background()
 
 Background::~Background()
 {
-
+    delete tutorial;
+    delete regular;
     delete background;
 }
 
@@ -24,6 +28,13 @@ Background::~Background()
 
 void Background::Update()
 {
+    if (backgroundType == REGULAR)
+    {
+        background = regular;
+    }
+    else {
+        background = tutorial;
+    }
 }
 
 // -------------------------------------------------------------------------------

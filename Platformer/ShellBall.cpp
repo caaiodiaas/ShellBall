@@ -68,6 +68,9 @@ void ShellBall::Init()
     wall4 = new Wall(window->Width() - 15, window->Height() - 50);
     scene->Add(wall4, STATIC);
 
+    powerUp = new PowerUp(player1, player2, player3, player4);
+    scene->Add(powerUp, STATIC);
+
     gameState = RUNNING;
 
 }
@@ -77,6 +80,44 @@ void ShellBall::Init()
 void ShellBall::Update()
 {
 
+
+    // buffs
+    if (player1->vel == 150) {
+        buffSlowA = new Buff(SLOW, 0);
+        scene->Add(buffSlowA, STATIC);
+    }
+    else {
+        if(buffSlowA != nullptr)
+            scene->Remove(buffSlowA, STATIC);
+    }
+
+    if (player4->vel == 150) {
+        buffSlowB = new Buff(SLOW, 1);
+        scene->Add(buffSlowB, STATIC);
+    }
+    else {
+        if (buffSlowB != nullptr)
+            scene->Remove(buffSlowB, STATIC);
+    }
+
+    if (player1->vel == 450) {
+        buffSpeedA = new Buff(SPEED, 0);
+        scene->Add(buffSpeedA, STATIC);
+    }
+    else {
+        if (buffSpeedA != nullptr)
+            scene->Remove(buffSpeedA, STATIC);
+    }
+
+    if (player4->vel == 450) {
+        buffSpeedB = new Buff(SPEED, 1);
+        scene->Add(buffSpeedB, STATIC);
+    }
+    else {
+        if (buffSpeedB != nullptr)
+            scene->Remove(buffSpeedB, STATIC);
+    }
+
     // gol lado direito
     if (ball->X() + 15 > window->Width()) {
         ball->Reset();
@@ -84,7 +125,13 @@ void ShellBall::Update()
         player2->Reset();
         player3->Reset();
         player4->Reset();
+
         scoreA++;
+        goal = new Goal(YELLOW);
+        scene->Add(goal, STATIC);
+        powerUp = new PowerUp(player1, player2, player3, player4);
+        scene->Add(powerUp, STATIC);
+        backg->backgroundType = TUTORIAL;
     }
 
     // gol lado esquerdo
@@ -95,6 +142,11 @@ void ShellBall::Update()
         player3->Reset();
         player4->Reset();
         scoreB++;
+        goal = new Goal(PINK);
+        scene->Add(goal, STATIC);
+        powerUp = new PowerUp(player1, player2, player3, player4);
+        scene->Add(powerUp, STATIC);
+        backg->backgroundType = TUTORIAL;
     }
 
     if (scoreA == 1) {
@@ -123,6 +175,8 @@ void ShellBall::Update()
         scoreIconB[2]->side = 3;
     }
 
+
+    // amarelo venceu
     if (scoreA == 3 && gameState == RUNNING) {
 
         winScreen = new WinScreen(A);
@@ -135,11 +189,13 @@ void ShellBall::Update()
         scene->Remove(wall2, STATIC);
         scene->Remove(wall3, STATIC);
         scene->Remove(wall4, STATIC);
+        scene->Remove(backg, STATIC);
 
         scene->Add(winScreen, STATIC);
         gameState = FINISHED;
     }
 
+    // rosa venceu
     if (scoreB == 3 && gameState == RUNNING) {
 
         winScreen = new WinScreen(B);
@@ -152,21 +208,21 @@ void ShellBall::Update()
         scene->Remove(wall2, STATIC);
         scene->Remove(wall3, STATIC);
         scene->Remove(wall4, STATIC);
+        scene->Remove(backg, STATIC);
 
         scene->Add(winScreen, STATIC);
-        gameState = FINISHED;
-
         gameState = FINISHED;
     }
 
 
-
+    // tutorial
     if (window->KeyPress(VK_SPACE) && ball->lastHit == STILL) {
         ball->Start();
         player1->Start();
         player2->Start();
         player3->Start();
         player4->Start();
+        backg->backgroundType = REGULAR;
     }
 
     // sai com o pressionar do ESC

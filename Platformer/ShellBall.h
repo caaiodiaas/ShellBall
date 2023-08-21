@@ -17,6 +17,10 @@
 #include "Ball.h"
 #include "Score.h"
 #include "WinScreen.h"
+#include "PowerUp.h"
+#include "PowerUp.h"
+#include "Goal.h"
+#include "Buff.h"
 
 // ------------------------------------------------------------------------------
 
@@ -40,6 +44,7 @@ private:
     Player2* player2 = nullptr;      // jogador 2
     Player3* player3 = nullptr;      // jogador 3
     Player4* player4 = nullptr;      // jogador 4
+    PowerUp* powerUp = nullptr;
     Score* scoreIconA[3];
     Score* scoreIconB[3];
     Wall* wall1 = nullptr;
@@ -49,6 +54,11 @@ private:
     Ball* ball = nullptr;      // jogador 4
     Background * backg = nullptr;   // pano de fundo
     WinScreen* winScreen = nullptr;
+    Goal* goal = nullptr;
+    Buff* buffSlowA = nullptr;
+    Buff* buffSlowB = nullptr;
+    Buff* buffSpeedA = nullptr;
+    Buff* buffSpeedB = nullptr;
     boolean viewBBox = false;
     GameState gameState;
     int scoreA;

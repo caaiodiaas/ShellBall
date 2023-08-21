@@ -6,7 +6,7 @@
 // ---------------------------------------------------------------------------------
 
 void Ball::Reset() {
-    MoveTo(window->CenterX(), window->CenterY(), 0.0f);
+    MoveTo(window->CenterX(), window->CenterY(), Layer::MIDDLE);
     velX = 0;
     velY = 0;
     lastHit = STILL;
@@ -51,7 +51,7 @@ Ball::Ball()
 
     lastHit = STILL;
 
-    MoveTo(window->CenterX(), window->CenterY(), 0.0f);
+    MoveTo(window->CenterX(), window->CenterY(), Layer::MIDDLE);
 
     BBox(new Circle(15));
 
@@ -83,12 +83,12 @@ void Ball::Update()
     Translate(velX * gameTime, velY * gameTime);
 
     if (y + height2 > window->Height()) {
-        MoveTo(x, y - 6);
+        MoveTo(x, y - 6, Layer::MIDDLE);
         velY = -velY;
     }
 
     if (y - height2 < 0) {
-        MoveTo(x, y + 6);
+        MoveTo(x, y + 6, Layer::MIDDLE);
         velY = -velY;
     }
 
