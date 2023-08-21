@@ -6,17 +6,20 @@
 
 Score::Score(float posX, float posY)
 {
-    tileset = new TileSet("Resources/GravityGuy.png", 32, 48, 5, 10);
+    tileset = new TileSet("Resources/ScoreSheet.png", 45, 34, 2, 4);
     anim = new Animation(tileset, 0.120f, true);
 
-    uint SeqOn[1] = { 1};
-    uint SeqOff[1] = { 5};
+    uint SeqOnA[1] = { 0 };
+    uint SeqOffA[1] = { 1 };
+    uint SeqOnB[1] = { 2 };
+    uint SeqOffB[1] = { 3 };
 
 
-    anim->Add(1, SeqOn, 1);
-    anim->Add(0, SeqOff, 1);
+    anim->Add(1, SeqOnA, 1);
+    anim->Add(0, SeqOffA, 1);
+    anim->Add(3, SeqOnB, 1);
+    anim->Add(2, SeqOffB, 1);
 
-    side = 0;
 
 
     MoveTo(posX, posY, 1.0f);

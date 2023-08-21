@@ -22,6 +22,10 @@ void ShellBall::Init()
     scoreIconA[0] = new Score(200, 30);
     scoreIconA[1] = new Score(240, 30);
     scoreIconA[2] = new Score(280, 30);
+    scoreIconA[0]->side = 0;
+    scoreIconA[1]->side = 0;
+    scoreIconA[2]->side = 0;
+
     scene->Add(scoreIconA[0], STATIC);
     scene->Add(scoreIconA[1], STATIC);
     scene->Add(scoreIconA[2], STATIC);
@@ -29,6 +33,10 @@ void ShellBall::Init()
     scoreIconB[0] = new Score(520, 30);
     scoreIconB[1] = new Score(560, 30);
     scoreIconB[2] = new Score(600, 30);
+    scoreIconB[0]->side = 2;
+    scoreIconB[1]->side = 2;
+    scoreIconB[2]->side = 2;
+
     scene->Add(scoreIconB[0], STATIC);
     scene->Add(scoreIconB[1], STATIC);
     scene->Add(scoreIconB[2], STATIC);
@@ -50,7 +58,6 @@ void ShellBall::Init()
 
     ball = new Ball();
     scene->Add(ball, MOVING);
-
 
     wall1 = new Wall(15, 50);
     scene->Add(wall1, STATIC);
@@ -105,15 +112,15 @@ void ShellBall::Update()
 
     if (scoreB == 1) {
         // acende score 1
-        scoreIconB[0]->side = 1;
+        scoreIconB[0]->side = 3;
     }
     if (scoreB == 2) {
         // acende score 2
-        scoreIconB[1]->side = 1;
+        scoreIconB[1]->side = 3;
     }
     if (scoreB == 3) {
         // acende score 3
-        scoreIconB[2]->side = 1;
+        scoreIconB[2]->side = 3;
     }
 
     if (scoreA == 3 && gameState == RUNNING) {
