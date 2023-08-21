@@ -45,6 +45,7 @@ private:
     Player3* player3 = nullptr;      // jogador 3
     Player4* player4 = nullptr;      // jogador 4
     PowerUp* powerUp = nullptr;
+
     Score* scoreIconA[3];
     Score* scoreIconB[3];
     Wall* wall1 = nullptr;

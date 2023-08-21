@@ -24,7 +24,7 @@ private:
 
 public:
     PowerType buffType;
-    Buff(PowerType type, uint side);                           // construtor
+    Buff( uint side);                           // construtor
     ~Buff();                          // destrutor
 
     void Update();                      // atualização do objeto

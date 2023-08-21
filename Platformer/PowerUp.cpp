@@ -7,14 +7,16 @@
 PowerUp::PowerUp(Player1* p1, Player2* p2, Player3* p3, Player4* p4)
 {
 
-    tileset = new TileSet("Resources/pokeball.png", 32, 32, 4, 12);
+    tileset = new TileSet("Resources/berry.png", 30, 32, 2, 4);
     anim = new Animation(tileset, 0.120f, true);
 
-    uint SeqA[4] = { 0,1,2,3 };
-    uint SeqB[4] = { 4,5,6,7 };
+    uint SeqA[4] = {  2,3,3,2 };
+    uint SeqB[4] = { 0,1,1,0 };
 
-    anim->Add(SPEED, SeqA, 4);
-    anim->Add(SLOW, SeqB, 4);
+
+    anim->Add(SPEED, SeqB, 4);
+    anim->Add(SLOW, SeqA, 4);
+
 
 
     BBox(new Circle(15));
@@ -26,12 +28,11 @@ PowerUp::PowerUp(Player1* p1, Player2* p2, Player3* p3, Player4* p4)
     player4 = p4;
 
     if (randX(mt) >= 0) {
-        powerType = SPEED;
+        powerType = SLOW;
         MoveTo(window->CenterX(), window->CenterY() + 150, Layer::MIDDLE);
-
     }
     else {
-        powerType = SLOW;
+        powerType = SPEED;
         MoveTo(window->CenterX(), window->CenterY() - 150, Layer::MIDDLE);
     }
 
@@ -65,8 +66,8 @@ void PowerUp::OnCollision(Object* obj)
 
     if (ball->lastHit == LEFT) {
         if (powerType == SLOW) {
-            player4->vel = 150;
             player3->vel = 150;
+            player4->vel = 150;
         }
         if (powerType == SPEED) {
             player1->vel = 450;
@@ -76,11 +77,11 @@ void PowerUp::OnCollision(Object* obj)
 
     if (ball->lastHit == RIGHT) {
         if (powerType == SLOW) {
-            player1->vel = 150;
+            player1->vel =150;
             player2->vel = 150;
         }
         if (powerType == SPEED) {
-            player3->vel = 450;
+            player3->vel =450;
             player4->vel = 450;
         }
     }

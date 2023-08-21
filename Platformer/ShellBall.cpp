@@ -71,6 +71,16 @@ void ShellBall::Init()
     powerUp = new PowerUp(player1, player2, player3, player4);
     scene->Add(powerUp, STATIC);
 
+    buffSpeedA = new Buff( 0);
+    buffSpeedB = new Buff( 1);
+    buffSlowA = new Buff( 0);
+    buffSlowB = new Buff( 1);
+
+    scene->Add(buffSlowA, STATIC);
+    scene->Add(buffSlowB, STATIC);
+    scene->Add(buffSpeedA, STATIC);
+    scene->Add(buffSpeedB, STATIC);
+
     gameState = RUNNING;
 
 }
@@ -83,40 +93,35 @@ void ShellBall::Update()
 
     // buffs
     if (player1->vel == 150) {
-        buffSlowA = new Buff(SLOW, 0);
-        scene->Add(buffSlowA, STATIC);
+        buffSlowA->buffType = SLOW;
     }
     else {
-        if(buffSlowA != nullptr)
-            scene->Remove(buffSlowA, STATIC);
+        buffSlowA->buffType = USED;
     }
 
+
     if (player4->vel == 150) {
-        buffSlowB = new Buff(SLOW, 1);
-        scene->Add(buffSlowB, STATIC);
+        buffSlowB->buffType = SLOW;
     }
     else {
-        if (buffSlowB != nullptr)
-            scene->Remove(buffSlowB, STATIC);
+        buffSlowB->buffType = USED;
     }
 
     if (player1->vel == 450) {
-        buffSpeedA = new Buff(SPEED, 0);
-        scene->Add(buffSpeedA, STATIC);
+        buffSpeedA->buffType = SPEED;
     }
     else {
-        if (buffSpeedA != nullptr)
-            scene->Remove(buffSpeedA, STATIC);
+        buffSpeedA->buffType = USED;
     }
 
     if (player4->vel == 450) {
-        buffSpeedB = new Buff(SPEED, 1);
-        scene->Add(buffSpeedB, STATIC);
+        buffSpeedB->buffType = SPEED;
     }
     else {
-        if (buffSpeedB != nullptr)
-            scene->Remove(buffSpeedB, STATIC);
+        buffSpeedB->buffType = USED;
     }
+
+    
 
     // gol lado direito
     if (ball->X() + 15 > window->Width()) {
@@ -125,7 +130,6 @@ void ShellBall::Update()
         player2->Reset();
         player3->Reset();
         player4->Reset();
-
         scoreA++;
         goal = new Goal(YELLOW);
         scene->Add(goal, STATIC);

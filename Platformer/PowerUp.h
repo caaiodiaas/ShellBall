@@ -28,13 +28,14 @@ private:
 
     uniform_int_distribution<int> randX{ -1,0 };
     uniform_int_distribution<int> randY{ -1,0 };
-    PowerType powerType;
+
     Player1* player1;
     Player2* player2;
     Player3* player3;
     Player4* player4;
 
 public:
+    PowerType powerType;
     PowerUp(Player1* player1, Player2* player2, Player3* player3, Player4* player4);
     ~PowerUp();
 

@@ -20,8 +20,9 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
     engine->window->Mode(WINDOWED);
     engine->window->Size(800, 450);
     engine->window->Color(25, 25, 25);
-    engine->window->Title("ShellBall");
+    engine->window->Title("PokéPong");
     engine->window->Icon(IDI_ICON);
+    engine->window->Cursor(IDC_CURSOR);
     engine->graphics->VSync(true);
 
     // inicia o jogo
