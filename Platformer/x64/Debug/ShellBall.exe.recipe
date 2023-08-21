@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>G:\Programming\Repository\ShellBall\x64\Debug\ShellBall.exe</FullPath>
+      <FullPath>C:\Users\caiod\Desktop\Lab13\ShellBall\ShellBall\x64\Debug\ShellBall.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>G:\Programming\Repository\ShellBall\Platformer\Shaders\Pixel.cso</FullPath>
+      <FullPath>C:\Users\caiod\Desktop\Lab13\ShellBall\ShellBall\Platformer\Shaders\Pixel.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>G:\Programming\Repository\ShellBall\Platformer\Shaders\Vertex.cso</FullPath>
+      <FullPath>C:\Users\caiod\Desktop\Lab13\ShellBall\ShellBall\Platformer\Shaders\Vertex.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

@@ -15,19 +15,19 @@ void Player2::Start()
 }
 Player2::Player2()
 {
-    tileset = new TileSet("Resources/GravityGuy.png", 32, 48, 5, 10);
-    anim = new Animation(tileset, 0.120f, true);
+    tileset = new TileSet("Resources/pokeplayer.png", 46, 72, 7, 14);
+    anim = new Animation(tileset, 0.12f, true);
 
-    uint SeqUp[4] = { 1,2,3,4 };
-    uint SeqDown[4] = { 5,6,7,8 };
+    uint SeqUp[3] = { 1,2,3 };
+    uint SeqDown[3] = { 4,5,6 };
     uint SeqStill[1] = { 0 };
 
     height2 = int(60 / 2);
     vel = 0;
 
 
-    anim->Add(1, SeqDown, 4);
-    anim->Add(0, SeqUp, 4);
+    anim->Add(1, SeqDown, 3);
+    anim->Add(0, SeqUp, 3);
     anim->Add(2, SeqStill, 1);
 
     side = 2;

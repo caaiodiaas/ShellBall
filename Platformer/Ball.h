@@ -15,7 +15,7 @@ using std::mt19937;
 using std::uniform_int_distribution;
 
 // ------------------------------------------------------------------------------
-enum LastHit { STILL, RIGHT, LEFT  };
+enum LastHit { STILL, RIGHT, LEFT, NEUTRAL };
 
 class Ball : public Object
 {

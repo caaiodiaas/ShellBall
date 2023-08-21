@@ -20,8 +20,8 @@ void ShellBall::Init()
     scene->Add(backg, STATIC);
 
     scoreIconA[0] = new Score(200, 30);
-    scoreIconA[1] = new Score(240, 30);
-    scoreIconA[2] = new Score(280, 30);
+    scoreIconA[1] = new Score(250, 30);
+    scoreIconA[2] = new Score(300, 30);
     scoreIconA[0]->side = 0;
     scoreIconA[1]->side = 0;
     scoreIconA[2]->side = 0;
@@ -30,8 +30,8 @@ void ShellBall::Init()
     scene->Add(scoreIconA[1], STATIC);
     scene->Add(scoreIconA[2], STATIC);
 
-    scoreIconB[0] = new Score(520, 30);
-    scoreIconB[1] = new Score(560, 30);
+    scoreIconB[0] = new Score(500, 30);
+    scoreIconB[1] = new Score(550, 30);
     scoreIconB[2] = new Score(600, 30);
     scoreIconB[0]->side = 2;
     scoreIconB[1]->side = 2;

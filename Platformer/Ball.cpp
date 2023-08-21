@@ -13,13 +13,12 @@ void Ball::Reset() {
 }
 
 void Ball::Start() {
+    lastHit = NEUTRAL;
     if (randX(mt) >= 0) {
         velX = 150;
-        lastHit = LEFT;
     }
     else {
         velX = -150;
-        lastHit = RIGHT;
     }
 
     if (randY(mt) >= 0) {
@@ -32,11 +31,12 @@ void Ball::Start() {
 
 Ball::Ball()
 {
-    tileset = new TileSet("Resources/GravityGuy.png", 32, 48, 5, 10);
+    tileset = new TileSet("Resources/pokeball.png", 32, 32, 4, 12);
     anim = new Animation(tileset, 0.120f, true);
 
-    uint SeqRight[4] = { 1,2,3,4 };
-    uint SeqLeft[4] = { 5,6,7,8 };
+    uint SeqRight[4] = { 4,5,6,7 };
+    uint SeqLeft[4] = { 8,9,10,11 };
+    uint SeqNeutral[4] = { 0,1,2,3 };
     uint SeqStill[1] = { 0 };
 
     width2 = int(30 / 2);
@@ -46,6 +46,7 @@ Ball::Ball()
 
     anim->Add(RIGHT, SeqRight, 4);
     anim->Add(LEFT, SeqLeft, 4);
+    anim->Add(NEUTRAL, SeqNeutral, 4);
     anim->Add(STILL, SeqStill,1);
 
     lastHit = STILL;

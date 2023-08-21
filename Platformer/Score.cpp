@@ -6,7 +6,7 @@
 
 Score::Score(float posX, float posY)
 {
-    tileset = new TileSet("Resources/ScoreSheet.png", 45, 34, 2, 4);
+    tileset = new TileSet("Resources/ScoreSheet.png", 45, 35, 2, 4);
     anim = new Animation(tileset, 0.120f, true);
 
     uint SeqOnA[1] = { 0 };
@@ -22,7 +22,7 @@ Score::Score(float posX, float posY)
 
 
 
-    MoveTo(posX, posY, 1.0f);
+    MoveTo(posX, posY, Layer::FRONT);
 
     type = SCORE;
 }
