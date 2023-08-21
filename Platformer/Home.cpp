@@ -8,7 +8,7 @@
 
 void Home::Init()
 {
-    backg = new Sprite("Resources/Sky.png");
+    backg = new Sprite("Resources/Home.png");
 }
 
 // ------------------------------------------------------------------------------

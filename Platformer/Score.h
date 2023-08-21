@@ -1,23 +1,29 @@
-#ifndef _PLATFORMER_PLATFORM_H_
-#define _PLATFORMER_PLATFORM_H_
+
+
+#ifndef _SHELLBALL_SCORE_H_
+#define _SHELLBALL_SCORE_H_
 
 // ---------------------------------------------------------------------------------
+// Inclusões
 
 #include "Types.h"                      // tipos específicos da engine
 #include "Object.h"                     // interface de Object
-#include "Sprite.h"                     // background é composto por sprites
+#include "Animation.h"                  // animação de sprites
 
+// ------------------------------------------------------------------------------
 
-// ---------------------------------------------------------------------------------
 
 class Score : public Object
 {
 private:
-    Sprite* sprite;        // sprite da plataforma
+    TileSet* tileset = nullptr;        // folha de sprites do personagem
+    Animation* anim = nullptr;         // animação do personagem
+
 
 public:
-    Score(Image* img);
-    ~Score();
+    int side;
+    Score(float posX, float posY);                           // construtor
+    ~Score();                          // destrutor
 
     void Update();                      // atualização do objeto
     void Draw();                        // desenho do objeto
@@ -28,7 +34,7 @@ public:
 
 inline void Score::Draw()
 {
-    sprite->Draw(x, y, z);
+    anim->Draw(x, y, z);
 }
 
 // ---------------------------------------------------------------------------------

@@ -15,6 +15,8 @@
 #include "Player3.h"
 #include "Player4.h"
 #include "Ball.h"
+#include "Score.h"
+#include "WinScreen.h"
 
 // ------------------------------------------------------------------------------
 
@@ -22,7 +24,13 @@ enum ObjTypes
 {
     PLAYER,                             // jogador
     BALL,                               // bola
-    WALL                               // parede
+    WALL,                               // parede
+    SCORE                               // pontos
+};
+
+enum GameState {
+    RUNNING,
+    FINISHED
 };
 
 class ShellBall : public Game
@@ -32,9 +40,19 @@ private:
     Player2* player2 = nullptr;      // jogador 2
     Player3* player3 = nullptr;      // jogador 3
     Player4* player4 = nullptr;      // jogador 4
+    Score* scoreIconA[3];
+    Score* scoreIconB[3];
+    Wall* wall1 = nullptr;
+    Wall* wall2 = nullptr;
+    Wall* wall3 = nullptr;
+    Wall* wall4 = nullptr;
     Ball* ball = nullptr;      // jogador 4
     Background * backg = nullptr;   // pano de fundo
+    WinScreen* winScreen = nullptr;
     boolean viewBBox = false;
+    GameState gameState;
+    int scoreA;
+    int scoreB;
 
 public:
     static Scene * scene;           // gerenciador de cena

@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "ShellBall.h"
 #include "Resources.h"
+#include "Home.h"
 
 // -----------------------------------------------------------------------------
 
@@ -16,6 +17,24 @@ void ShellBall::Init()
 
     // pano de fundo do jogo
     backg = new Background();
+    scene->Add(backg, STATIC);
+
+    scoreIconA[0] = new Score(200, 30);
+    scoreIconA[1] = new Score(240, 30);
+    scoreIconA[2] = new Score(280, 30);
+    scene->Add(scoreIconA[0], STATIC);
+    scene->Add(scoreIconA[1], STATIC);
+    scene->Add(scoreIconA[2], STATIC);
+
+    scoreIconB[0] = new Score(520, 30);
+    scoreIconB[1] = new Score(560, 30);
+    scoreIconB[2] = new Score(600, 30);
+    scene->Add(scoreIconB[0], STATIC);
+    scene->Add(scoreIconB[1], STATIC);
+    scene->Add(scoreIconB[2], STATIC);
+
+    scoreA = 0;
+    scoreB = 0;
 
     player1 = new Player1();
     scene->Add(player1, MOVING);
@@ -33,14 +52,16 @@ void ShellBall::Init()
     scene->Add(ball, MOVING);
 
 
-    Wall* wall = new Wall(15, 50);
-    scene->Add(wall, STATIC);
-    wall = new Wall(15, window->Height()-50);
-    scene->Add(wall, STATIC);
-    wall = new Wall(window->Width()-15, 50);
-    scene->Add(wall, STATIC);
-    wall = new Wall(window->Width() - 15, window->Height() - 50);
-    scene->Add(wall, STATIC);
+    wall1 = new Wall(15, 50);
+    scene->Add(wall1, STATIC);
+    wall2 = new Wall(15, window->Height()-50);
+    scene->Add(wall2, STATIC);
+    wall3 = new Wall(window->Width()-15, 50);
+    scene->Add(wall3, STATIC);
+    wall4 = new Wall(window->Width() - 15, window->Height() - 50);
+    scene->Add(wall4, STATIC);
+
+    gameState = RUNNING;
 
 }
 
@@ -48,6 +69,7 @@ void ShellBall::Init()
 
 void ShellBall::Update()
 {
+
     // gol lado direito
     if (ball->X() + 15 > window->Width()) {
         ball->Reset();
@@ -55,6 +77,7 @@ void ShellBall::Update()
         player2->Reset();
         player3->Reset();
         player4->Reset();
+        scoreA++;
     }
 
     // gol lado esquerdo
@@ -64,28 +87,91 @@ void ShellBall::Update()
         player2->Reset();
         player3->Reset();
         player4->Reset();
+        scoreB++;
     }
 
+    if (scoreA == 1) {
+        // acende score 1
+        scoreIconA[0]->side = 1;
+    }
+    if (scoreA == 2) {
+        // acende score 2
+        scoreIconA[1]->side = 1;
+    }
+    if (scoreA == 3) {
+        // acende score 3
+        scoreIconA[2]->side = 1;
+    }
+
+    if (scoreB == 1) {
+        // acende score 1
+        scoreIconB[0]->side = 1;
+    }
+    if (scoreB == 2) {
+        // acende score 2
+        scoreIconB[1]->side = 1;
+    }
+    if (scoreB == 3) {
+        // acende score 3
+        scoreIconB[2]->side = 1;
+    }
+
+    if (scoreA == 3 && gameState == RUNNING) {
+
+        winScreen = new WinScreen(A);
+        scene->Remove(player1, MOVING);
+        scene->Remove(player2, MOVING);
+        scene->Remove(player3, MOVING);
+        scene->Remove(player4, MOVING);
+        scene->Remove(ball, MOVING);
+        scene->Remove(wall1, STATIC);
+        scene->Remove(wall2, STATIC);
+        scene->Remove(wall3, STATIC);
+        scene->Remove(wall4, STATIC);
+
+        scene->Add(winScreen, STATIC);
+        gameState = FINISHED;
+    }
+
+    if (scoreB == 3 && gameState == RUNNING) {
+
+        winScreen = new WinScreen(B);
+        scene->Remove(player1, MOVING);
+        scene->Remove(player2, MOVING);
+        scene->Remove(player3, MOVING);
+        scene->Remove(player4, MOVING);
+        scene->Remove(ball, MOVING);
+        scene->Remove(wall1, STATIC);
+        scene->Remove(wall2, STATIC);
+        scene->Remove(wall3, STATIC);
+        scene->Remove(wall4, STATIC);
+
+        scene->Add(winScreen, STATIC);
+        gameState = FINISHED;
+
+        gameState = FINISHED;
+    }
+
+
+
     if (window->KeyPress(VK_SPACE) && ball->lastHit == STILL) {
-
-       /* boolean waiting = true;
-        float timeEnd = gameTime + 1;
-        while (waiting) {
-            if (timeEnd < gameTime)
-                waiting = false;
-        }*/
-
-            ball->Start();
-            player1->Start();
-            player2->Start();
-            player3->Start();
-            player4->Start();       
-
+        ball->Start();
+        player1->Start();
+        player2->Start();
+        player3->Start();
+        player4->Start();
     }
 
     // sai com o pressionar do ESC
     if (window->KeyDown(VK_ESCAPE))
         window->Close();
+
+    // reinicia o jogo
+    if (window->KeyPress(VK_RETURN) && gameState == FINISHED) {
+        Engine::Next<Home>();
+        return;
+    }
+
 
     // atualiza cena do jogo
     scene->Update();
@@ -94,6 +180,8 @@ void ShellBall::Update()
     // visualizar BBox
     if (window->KeyPress('B'))
         viewBBox = ~viewBBox;
+
+
 }
 
 // ------------------------------------------------------------------------------

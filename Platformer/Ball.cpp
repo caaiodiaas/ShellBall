@@ -82,10 +82,12 @@ void Ball::Update()
     Translate(velX * gameTime, velY * gameTime);
 
     if (y + height2 > window->Height()) {
+        MoveTo(x, y - 6);
         velY = -velY;
     }
 
     if (y - height2 < 0) {
+        MoveTo(x, y + 6);
         velY = -velY;
     }
 
