@@ -18,13 +18,17 @@
 
 #include "Game.h"
 #include "Sprite.h"
+#include "TileSet.h"
+#include "Animation.h"
 
 // ------------------------------------------------------------------------------
 
 class Home : public Game
 {
 private:
-    Sprite* backg = nullptr;       // pano de fundo
+    TileSet* tileset = nullptr;      // folha de sprites da explosão
+    Animation* anim = nullptr;         // animação da explosão
+
 
 public:
     void Init();                    // inicialização

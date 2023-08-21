@@ -8,20 +8,25 @@
 
 void Home::Init()
 {
-    backg = new Sprite("Resources/Home.png");
+
+    tileset = new TileSet("Resources/MainMenu.png", 800, 450, 2, 2);
+    anim = new Animation(tileset, 0.6f, true);
 }
 
 // ------------------------------------------------------------------------------
 
 void Home::Finalize()
 {
-    delete backg;
+    delete tileset;
+    delete anim;
 }
 
 // ------------------------------------------------------------------------------
 
 void Home::Update()
 {
+
+    anim->NextFrame();
     // sai do jogo com a tecla ESC
     if (window->KeyPress(VK_ESCAPE))
         window->Close();
@@ -35,7 +40,7 @@ void Home::Update()
 
 void Home::Draw()
 {
-    backg->Draw(window->CenterX(), window->CenterY(), Layer::BACK);
+    anim->Draw(window->CenterX(), window->CenterY(), Layer::BACK);
 }
 
 // ------------------------------------------------------------------------------

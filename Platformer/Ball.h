@@ -21,6 +21,7 @@ class Ball : public Object
 {
 private:
     TileSet* tileset = nullptr;        // folha de sprites da bola
+    Animation* anim = nullptr;         // animação da bola
 
 
 public:
@@ -30,7 +31,7 @@ public:
     uniform_int_distribution<int> randX{ -1,0 };
     uniform_int_distribution<int> randY{ -1,0 };
     LastHit lastHit;
-    Animation* anim = nullptr;         // animação da bola
+
     int height2;
     int width2;
     float velX;

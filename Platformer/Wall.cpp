@@ -7,7 +7,7 @@
 Wall::Wall(float posX, float posY)
 {
 
-    wall = new Sprite("Resources/SmallGray.png");
+    wall = new Sprite("Resources/Wall.png");
     BBox(new Rect(-16, -50, 16,50));
     MoveTo(posX, posY);
 
