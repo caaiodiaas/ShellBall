@@ -36,6 +36,7 @@ public:
     int width2;
     float velX;
     float velY;
+    float velPositive;
 
     Ball();                           // construtor
     ~Ball();                          // destrutor

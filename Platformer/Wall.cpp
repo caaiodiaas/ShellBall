@@ -35,20 +35,21 @@ void Wall::OnCollision(Object* obj)
 {
     Ball* ball = (Ball*)obj;
 
-    if (ball->Y() + ball->height2 - 6 < y - 50 && ball->Y() - ball->height2 < y - 50) {
-        ball->MoveTo(ball->X(), ball->Y() - 6);
+    if (ball->Y() <= y - 50) {
+        ball->MoveTo(ball->X(), ball->Y() - ball->velPositive / 40, Layer::MIDDLE);
         ball->velY = -ball->velY;
-    }
-    else if (ball->X() - ball->width2 + 6 > x + 16 && ball->X() + ball->width2 > x + 16) {
-        ball->MoveTo(ball->X() + 6, ball->Y());
+    }else
+    if (ball->Y() >= y + 50) {
+        ball->MoveTo(ball->X(), ball->Y() + ball->velPositive / 40, Layer::MIDDLE);
+        ball->velY = -ball->velY;
+    }else
+    if (ball->X() < x - 16) {
+        ball->MoveTo(ball->X() - ball->velPositive / 40, ball->Y(), Layer::MIDDLE);
         ball->velX = -ball->velX;
     }
-    else    if (ball->Y() - ball->height2 + 6 > y + 50 && ball->Y() + ball->height2 > y + 50) {
-        ball->MoveTo(ball->X(), ball->Y() + 6);
-        ball->velY = -ball->velY;
-    }
-    else     if (ball->X() + ball->width2 - 6 < x - 16 && ball->X() - ball->width2 < x - 16) {
-        ball->MoveTo(ball->X() - 6, ball->Y());
+    else
+    if (ball->X() > x + 16) {
+        ball->MoveTo(ball->X() + ball->velPositive / 40, ball->Y(), Layer::MIDDLE);
         ball->velX = -ball->velX;
     }
 

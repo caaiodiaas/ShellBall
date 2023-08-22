@@ -1,3 +1,23 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: O diretório intermediário (x64\Debug\) contém arquivos compartilhados de outro projeto (Platformer.vcxproj). Isso pode levar a um comportamento incorreto de limpeza e recompilação.
-  Main.cpp
-  Platformer.vcxproj -> C:\Users\caiod\Desktop\Lab13\ShellBall\ShellBall\x64\Debug\ShellBall.exe
+  Player1.cpp
+  Player2.cpp
+  Player3.cpp
+  Player4.cpp
+  Wall.cpp
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player4.cpp(37,38): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player4.cpp(37,24): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player4.cpp(91,23): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player4.cpp(94,22): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player2.cpp(37,38): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player2.cpp(37,24): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player2.cpp(91,23): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player2.cpp(94,22): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player3.cpp(37,38): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player3.cpp(37,24): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player3.cpp(93,23): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player3.cpp(96,22): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player1.cpp(40,38): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player1.cpp(40,24): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player1.cpp(97,23): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\caiod\OneDrive\Documentos\ShellBall\Platformer\Player1.cpp(100,22): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+  Platformer.vcxproj -> C:\Users\caiod\OneDrive\Documentos\ShellBall\x64\Debug\ShellBall.exe

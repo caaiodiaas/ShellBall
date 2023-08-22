@@ -56,23 +56,28 @@ void Player1::OnCollision(Object* obj)
 {
         Ball* ball = (Ball*)obj;
 
-        if (ball->Y() + ball->height2 - 6 < y - height2 && ball->Y() - ball->height2 < y - height2) {
-            ball->MoveTo(ball->X(), ball->Y() - 6, Layer::MIDDLE);
-            ball->velY = -ball->velY;
-        }
-        else if (ball->X() - ball->width2 + 6 > x + 16 && ball->X() + ball->width2 > x + 16) {
-            ball->MoveTo(ball->X() + 6, ball->Y(), Layer::MIDDLE);
-            ball->velX = -ball->velX;
-        }
-        else    if (ball->Y() - ball->height2 + 6 > y + height2 && ball->Y() + ball->height2 > y + height2) {
-            ball->MoveTo(ball->X(), ball->Y() + 6, Layer::MIDDLE);
-            ball->velY = -ball->velY;
-        }
-        else     if (ball->X() + ball->width2 - 6 < x - 16 && ball->X() - ball->width2 < x - 16) {
-            ball->MoveTo(ball->X() - 6, ball->Y(), Layer::MIDDLE);
-            ball->velX = -ball->velX;
-        }
+    if (ball->Y() <= y - height2) {
+        ball->MoveTo(ball->X(), ball->Y() - ball->velPositive / 40, Layer::MIDDLE);
+        ball->velY = -ball->velY;
+    }
+    else
+    if (ball->Y() >= y + height2) {
+        ball->MoveTo(ball->X(), ball->Y() + ball->velPositive / 40, Layer::MIDDLE);
+        ball->velY = -ball->velY;
+    }
+    else
+    if (ball->X() < x - 17) {
+        ball->MoveTo(ball->X() - ball->velPositive / 40, ball->Y(), Layer::MIDDLE);
+        ball->velX = -ball->velX;
+    }
+    else
+    if (ball->X() > x + 17) {
+        ball->MoveTo(ball->X() + ball->velPositive / 40, ball->Y(), Layer::MIDDLE);
+        ball->velX = -ball->velX;
+    }
+  
         if (ball->velX < 400 && ball->velX > -400) {
+            ball->velPositive = ball->velPositive * 1.1f;
             ball->velX = ball->velX * 1.1f;
             ball->velY = ball->velY * 1.1f;
         }

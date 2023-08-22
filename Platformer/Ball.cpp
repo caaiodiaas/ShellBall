@@ -13,6 +13,7 @@ void Ball::Reset() {
 }
 
 void Ball::Start() {
+    velPositive = 150;
     lastHit = NEUTRAL;
     if (randX(mt) >= 0) {
         velX = 150;
